@@ -5,5 +5,6 @@
 </script>
 
 <Navigation />
-<h1>Welcome to BlogKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<main class="container py-5 font-roboto">
+	<slot />
+</main>

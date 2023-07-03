@@ -3,13 +3,27 @@ import {
 	presetIcons,
 	presetUno,
 	presetWebFonts,
-	transformerCompileClass,
 	transformerVariantGroup,
 } from "unocss";
 import extractorSvelte from "@unocss/extractor-svelte";
 
 export default defineConfig({
-	presets: [presetIcons({}), presetUno(), presetWebFonts({})],
+	presets: [
+		presetIcons({
+			extraProperties: {
+				display: "inline-block",
+				"vertical-align": "middle",
+			},
+		}),
+		presetUno(),
+		presetWebFonts({
+			// provider: "google",
+			fonts: {
+				roboto: "Roboto",
+			},
+		}),
+	],
+	shortcuts: { container: "max-w-5xl mx-auto px-2" },
 	extractors: [extractorSvelte()],
-	transformers: [transformerCompileClass(), transformerVariantGroup()],
+	transformers: [transformerVariantGroup()],
 });
