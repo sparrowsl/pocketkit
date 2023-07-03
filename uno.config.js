@@ -6,9 +6,11 @@ import {
 	transformerVariantGroup,
 } from "unocss";
 import extractorSvelte from "@unocss/extractor-svelte";
+import { presetForms } from "@julr/unocss-preset-forms";
 
 export default defineConfig({
 	presets: [
+		presetForms(),
 		presetIcons({
 			extraProperties: {
 				display: "inline-block",
@@ -17,7 +19,6 @@ export default defineConfig({
 		}),
 		presetUno(),
 		presetWebFonts({
-			// provider: "google",
 			fonts: {
 				roboto: "Roboto",
 			},
