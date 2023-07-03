@@ -1,10 +1,10 @@
 export interface Blog {
-	id: String;
+	id: string;
 	author: {
-		name: String;
-		image: String;
+		name: string;
+		image: string;
 	};
 	date: Date;
-	title: String;
-	content: String;
+	title: string;
+	content: string;
 }

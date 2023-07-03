@@ -1,16 +1,27 @@
-/** @type {import("$lib/types.js").Blog[]} */
 const blogs = [
 	{
 		id: crypto.randomUUID(),
 		author: {
 			name: "JohnDoe",
-			image: "",
+			image: "https://placehold.co/50x50",
 		},
 		content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit nesciunt nemo commodi?
     Dignissimos distinctio ratione tempora perferendis, ex debitis earum sequi amet non. Dolore
     maiores veniam fugiat illum libero? Sit.`,
 		date: new Date(),
-		title: "Hello World",
+		title: "Hello World first post",
+	},
+	{
+		id: crypto.randomUUID(),
+		author: {
+			name: "jenny",
+			image: "https://placehold.co/50x50",
+		},
+		content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit nesciunt nemo commodi?
+    Dignissimos distinctio ratione tempora perferendis, ex debitis earum sequi amet non. Dolore
+    maiores veniam fugiat illum libero? Sit.`,
+		date: new Date(),
+		title: "Hello World second post",
 	},
 ];
 

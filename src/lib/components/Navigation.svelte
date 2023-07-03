@@ -3,7 +3,7 @@
 		<!-- Logo -->
 		<a class="font-bold tracking-wider" href="/">BlogKit</a>
 
-		<ul class="flex gap-5 items-center">
+		<ul class="flex gap-5 items-center text-sm">
 			<li><a href="/">Login</a></li>
 			<li><a href="/">Register</a></li>
 			<!-- <li><a href="/">Home</a></li> -->

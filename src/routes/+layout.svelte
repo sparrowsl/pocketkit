@@ -5,6 +5,8 @@
 </script>
 
 <Navigation />
-<main class="container py-5 font-roboto">
-	<slot />
-</main>
+<div class="bg-gray-50 min-h-[calc(100dvh-10dvh)]">
+	<main class="container py-5 font-roboto">
+		<slot />
+	</main>
+</div>
