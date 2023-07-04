@@ -7,7 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"test": "vitest"
 	},
 	"devDependencies": {
 		"@julr/unocss-preset-forms": "^0.0.5",
@@ -20,6 +21,7 @@
 		"typescript": "^5.0.0",
 		"unocss": "^0.53.4",
 		"vite": "^4.3.6",
+		"vitest": "^0.32.4",
 		"zod": "^3.21.4"
 	},
 	"type": "module",
