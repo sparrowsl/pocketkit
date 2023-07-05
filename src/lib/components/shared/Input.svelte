@@ -4,14 +4,14 @@
 	export let type = "text";
 	export let value = "";
 	export let name = "";
-	export let id = "";
+	// export let required = "";
 </script>
 
 <input
 	{type}
 	{placeholder}
 	{name}
-	{id}
+	{value}
 	on:input={(e) => (value = e?.target?.value)}
 	class="{$$props.class} block w-full text-sm rounded border-gray-400"
 />

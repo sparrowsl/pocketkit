@@ -7,10 +7,9 @@
 			<li><a href="/login">Login</a></li>
 			<li><a href="/register">Register</a></li>
 			<!-- {#if $page?.locals} -->
-			<li><a href="/posts/new">New Post</a></li>
-			<li><a href="/account">Account</a></li>
-			<!--
-			<li><a href="/logout">Logout</a></li> -->
+			<!-- <li><a href="/posts/new">New Post</a></li> -->
+			<!-- <li><a href="/account">Account</a></li> -->
+			<!-- <li><a href="/logout">Logout</a></li> -->
 			<!-- {/if} -->
 		</ul>
 	</nav>

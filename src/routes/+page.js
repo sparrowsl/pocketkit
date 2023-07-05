@@ -1,4 +1,4 @@
-const blogs = [
+const posts = [
 	{
 		id: crypto.randomUUID(),
 		author: {
@@ -28,7 +28,7 @@ const blogs = [
 /** @type {import('./$types').PageLoad} */
 export async function load({}) {
 	return {
-		/** @type {import("$lib/types.js").Blog[]} */
-		blogs: blogs || [],
+		/** @type {import("$lib/types.js").Post[]} */
+		posts: posts || [],
 	};
 }
