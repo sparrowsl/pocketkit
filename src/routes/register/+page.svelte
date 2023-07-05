@@ -6,7 +6,6 @@
 
 	/** @type {import("./$types").ActionData} */
 	export let form;
-	$: console.log(form);
 </script>
 
 <section class="max-w-xl mx-auto">
