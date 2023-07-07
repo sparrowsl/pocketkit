@@ -1,10 +1,11 @@
 import { z } from "zod";
+import { fail, redirect } from "@sveltejs/kit";
 
 const registerSchema = z
 	.object({
 		username: z
 			.string({ required_error: "Username is required" })
-			.min(4, { message: "Username must be at least 3 letters" })
+			.min(3, { message: "Username must be at least 3 letters" })
 			.trim(),
 		email: z
 			.string({ required_error: "Email address is required" })
@@ -42,17 +43,29 @@ export const actions = {
 	default: async ({ cookies, fetch, request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
+		let result;
 		try {
-			const result = registerSchema.parse(formData);
-			console.log(result);
-
-			// return {
-			// 	result,
-			// };
+			result = registerSchema.parse(formData);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
 			const { password, confirmPassword, ...data } = formData;
 			return { data, errors };
 		}
+
+		const res = await fetch("/api/users", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				email: result.email,
+				password: result.password,
+				username: result.username,
+			}),
+		});
+		const data = await res.json();
+
+		if (!res.ok) return fail(400, { error: data.message });
+
+		// TODO: set cookie/jwt token for the user
+		throw redirect(302, "/");
 	},
 };
