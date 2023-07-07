@@ -26,6 +26,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^4.16.2",
+		"bcrypt": "^5.1.0",
 		"dayjs": "^1.11.9",
 		"zod": "^3.21.4"
 	}

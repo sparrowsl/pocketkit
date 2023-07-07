@@ -1,7 +1,7 @@
 export interface Post {
 	id: string;
 	author: {
-		name: string;
+		username: string;
 		image: string;
 	};
 	date: Date;
