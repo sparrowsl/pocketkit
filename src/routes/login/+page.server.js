@@ -1,4 +1,6 @@
+import { fail, redirect } from "@sveltejs/kit";
 import { z } from "zod";
+import bcrypt from "bcrypt";
 
 const loginSchema = z.object({
 	email: z
@@ -20,12 +22,23 @@ export const actions = {
 	default: async ({ cookies, fetch, request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
+		let result;
 		try {
-			const result = loginSchema.parse(formData);
-			console.log(result);
+			result = loginSchema.parse(formData);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
 			return { errors };
 		}
+
+		// Check if email exists
+		const res = await fetch(`/api/users/${result.email}`);
+		const data = await res.json();
+
+		// Compare the email against the user email
+		const validPassword = await bcrypt.compare(result.password, data?.user?.password);
+		if (!res.ok || !validPassword) return fail(400, { error: data.message });
+
+		// TODO: set cookie/jwt token for the user if remember me option is selected
+		throw redirect(302, "/");
 	},
 };

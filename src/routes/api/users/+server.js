@@ -15,7 +15,7 @@ export async function POST({ request }) {
 				password: await bcrypt.hash(password, 10),
 			},
 		});
-		return json(user);
+		return json({ user });
 	} catch (e) {
 		throw error(400, "Username or Email already exists");
 	}

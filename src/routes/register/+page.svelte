@@ -3,6 +3,7 @@
 	import { enhance } from "$app/forms";
 	import Button from "$lib/components/shared/Button.svelte";
 	import Input from "$lib/components/shared/Input.svelte";
+	import { error } from "@sveltejs/kit";
 
 	/** @type {import("./$types").ActionData} */
 	export let form;
@@ -10,7 +11,7 @@
 
 {#if form?.error}
 	<!-- Flash Message/Toast -->
-	<p class="text-(sm red)">{form.error}</p>
+	<p class="text-(sm red)">{form.errors}</p>
 {/if}
 <section class="max-w-xl mx-auto">
 	<form action="" method="post" class="border bg-white py-5 px-10" use:enhance>
