@@ -38,7 +38,14 @@ export const actions = {
 		const validPassword = await bcrypt.compare(result.password, data?.user?.password);
 		if (!res.ok || !validPassword) return fail(400, { error: data.message });
 
-		// TODO: set cookie/jwt token for the user if remember me option is selected
+		// TODO: set jwt token for the user and store in a cookie
+		cookies.set("session", data.user.id, {
+			httpOnly: true,
+			maxAge: result?.remember ? 60 * 60 * 24 * 7 : 60 * 60,
+			path: "/",
+			sameSite: "strict",
+		});
+
 		throw redirect(302, "/");
 	},
 };

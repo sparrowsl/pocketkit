@@ -65,7 +65,13 @@ export const actions = {
 
 		if (!res.ok) return fail(400, { error: data.message });
 
-		// TODO: set cookie/jwt token for the user
+		// TODO: set jwt token for the user and store in a cookie
+		cookies.set("session", data.user.id, {
+			httpOnly: true,
+			maxAge: 60 * 60 * 24 * 7,
+			path: "/",
+			sameSite: "strict",
+		});
 		throw redirect(302, "/");
 	},
 };
