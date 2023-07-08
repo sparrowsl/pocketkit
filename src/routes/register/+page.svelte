@@ -3,7 +3,6 @@
 	import { enhance } from "$app/forms";
 	import Button from "$lib/components/shared/Button.svelte";
 	import Input from "$lib/components/shared/Input.svelte";
-	import { error } from "@sveltejs/kit";
 
 	/** @type {import("./$types").ActionData} */
 	export let form;

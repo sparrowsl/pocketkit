@@ -38,6 +38,8 @@ const registerSchema = z
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }) {
 	if (locals.user) throw redirect(307, "/");
+
+	return { user: locals.user };
 }
 
 /** @type {import('./$types').Actions} */

@@ -4,9 +4,10 @@ import prisma from "$lib/server/prisma.js";
 export async function handle({ event, resolve }) {
 	const session = event.cookies.get("session");
 
+	if (!session) return await resolve(event);
+
 	const user = await prisma.user.findUnique({
-		// @ts-ignore
-		where: { id: session * 1 },
+		where: { id: Number(session) },
 		select: {
 			email: true,
 			id: true,
