@@ -4,6 +4,7 @@
 	import dayjs from "dayjs";
 	import Image from "$lib/components/shared/Image.svelte";
 
+	/** @type {import("./$types").PageData} */
 	export let data;
 </script>
 
