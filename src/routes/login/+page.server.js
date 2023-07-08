@@ -36,9 +36,10 @@ export const actions = {
 		const res = await fetch(`/api/users/${result.email}`);
 		const data = await res.json();
 
-		// Compare the email against the user email
+		if (!res.ok) return fail(400, { error: data.message });
+
 		const validPassword = await bcrypt.compare(result.password, data?.user?.password);
-		if (!res.ok || !validPassword) return fail(400, { error: data.message });
+		if (!validPassword) return fail(400, { error: data.message });
 
 		// TODO: set jwt token for the user and store in a cookie
 		cookies.set("session", data.user.id, {

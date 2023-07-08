@@ -15,7 +15,6 @@ const updateSchema = z.object({
 		.string({ required_error: "Password is required" })
 		.min(4, { message: "Password is too short, must be (4) or more characters" })
 		.trim(),
-	// .optional(),
 	image: z.any(z.instanceof(File)).optional(),
 });
 
@@ -34,8 +33,8 @@ export const actions = {
 			result = updateSchema.parse(formData);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
-			console.log(errors);
-			return { errors };
+			// const { password, ...data } = formData;
+			return { data: formData, errors };
 		}
 
 		const res = await fetch(`/api/users/${result.id}`, {

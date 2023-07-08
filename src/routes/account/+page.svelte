@@ -29,25 +29,25 @@
 		<fieldset class="grid gap-4">
 			<Input type="hidden" value={user.id} name="id" />
 			<label for="" class="text-(sm gray-500)">
-				<span>Username (optional)</span>
+				<span>Username</span>
 				<Input name="username" bind:value={user.username} placeholder="username" />
 				<small class="text-red">{form?.errors?.username ?? ""}</small>
 			</label>
 
 			<label for="" class="text-(sm gray-500)">
-				<span>Email (optional)</span>
+				<span>Email</span>
 				<Input type="email" name="email" bind:value={user.email} placeholder="email" />
 				<small class="text-red">{form?.errors?.email ?? ""}</small>
 			</label>
 
 			<label for="" class="text-(sm gray-500)">
-				<span>Password (optional)</span>
+				<span>Password</span>
 				<Input type="password" name="password" />
 				<small class="text-red">{form?.errors?.password ?? ""}</small>
 			</label>
 
 			<label for="file" class="flex flex-col gap-1 text-(sm gray-500)">
-				<span>Update Image (optional)</span>
+				<span>Update Image</span>
 				<Input type="file" id="file" name="file" />
 			</label>
 
