@@ -1,7 +1,6 @@
 <script>
 	import { enhance } from "$app/forms";
 	import { page } from "$app/stores";
-	console.log($page.data);
 </script>
 
 <div class="bg-gray-500 text-white font-roboto">

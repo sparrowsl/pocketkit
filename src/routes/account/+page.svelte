@@ -1,20 +1,17 @@
 <script>
+	import { page } from "$app/stores";
 	import Button from "$lib/components/shared/Button.svelte";
 	import Image from "$lib/components/shared/Image.svelte";
 	import Input from "$lib/components/shared/Input.svelte";
 
-	const user = {
-		name: "JohnDoe",
-		email: "john@mail.com",
-		image: "https://placehold.co/100x100",
-	};
+	const user = $page.data?.user;
 </script>
 
 <section class="max-w-xl mx-auto bg-white border rounded p-5">
 	<figure class="flex gap-5 items-center">
-		<Image src={user.image} alt="{user.name}'s profile" class="rounded-full" />
+		<Image src={user.image} alt="{user.username}'s profile" class=" h-7rem rounded-full" />
 		<figcaption>
-			<h3 class="text-(gray-800 2xl) mb-1">{user.name}</h3>
+			<h3 class="text-(gray-800 2xl) mb-1">{user.username}</h3>
 			<p class="text-gray">{user.email}</p>
 		</figcaption>
 	</figure>
@@ -25,7 +22,7 @@
 		<fieldset class="grid gap-4">
 			<label for="" class="text-(sm gray-500)">
 				<span>Username</span>
-				<Input name="password" bind:value={user.name} />
+				<Input name="password" bind:value={user.username} />
 			</label>
 
 			<label for="" class="text-(sm gray-500)">
