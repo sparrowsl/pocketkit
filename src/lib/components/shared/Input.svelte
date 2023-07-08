@@ -13,5 +13,5 @@
 	{name}
 	{value}
 	on:input={(e) => (value = e?.target?.value)}
-	class="{$$props.class} block w-full text-sm rounded border-gray-400"
+	class="{$$props.class} block w-full text-sm rounded border-gray-400 focus:(text-gray-800)"
 />
