@@ -12,7 +12,7 @@
 		alt="{post.author.username}'s profile"
 		class="rounded-full h-4rem"
 	/>
-	<figcaption>
+	<figcaption class="w-full">
 		<div class="flex items-center gap-3 border-b mb-2">
 			<h3 class="text-(blue sm)">{post.author.username}</h3>
 			<p class="text-(xs gray-400) tracking-wide">{dayjs(post.date).format("YYYY-MM-DD")}</p>
