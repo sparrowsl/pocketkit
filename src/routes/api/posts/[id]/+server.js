@@ -18,3 +18,9 @@ export async function GET({ params }) {
 
 	return json({ post });
 }
+
+/** @type {import('./$types').RequestHandler} */
+export async function DELETE({ request }) {
+	console.log(await request.json());
+	return json({});
+}

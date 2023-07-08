@@ -21,7 +21,7 @@ export async function PATCH({ request, params }) {
 			email,
 			password: await bcrypt.hash(password, 10),
 			username,
-			image: `https://robohash.org/${username}`,
+			image: image ?? `https://robohash.org/${username}`,
 		},
 	});
 	return json({ user });

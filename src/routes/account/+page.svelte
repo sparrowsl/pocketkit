@@ -16,7 +16,11 @@
 {/if}
 <section class="max-w-xl mx-auto bg-white border rounded p-5">
 	<figure class="flex gap-5 items-center">
-		<Image src={user.image} alt="{user.username}'s profile" class=" h-6rem rounded-full" />
+		<Image
+			src={user.image.includes("robohash") ? user.image : `/uploads/${user.image}`}
+			alt="{user.username}'s profile"
+			class="h-6rem w-6rem bg-contain rounded-full"
+		/>
 		<figcaption>
 			<h3 class="text-(gray-800 2xl) mb-1">{user.username}</h3>
 			<p class="text-gray">{user.email}</p>

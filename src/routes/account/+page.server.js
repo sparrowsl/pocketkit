@@ -1,5 +1,6 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { z } from "zod";
+import { uploadFile } from "$lib/utils/uploadImage.js";
 
 const updateSchema = z.object({
 	id: z.string().transform((num) => parseInt(num)),
@@ -33,14 +34,19 @@ export const actions = {
 			result = updateSchema.parse(formData);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
-			// const { password, ...data } = formData;
 			return { data: formData, errors };
 		}
 
 		const res = await fetch(`/api/users/${result.id}`, {
 			headers: { "Content-Type": "application/json" },
 			method: "PATCH",
-			body: JSON.stringify(result),
+			body: JSON.stringify({
+				id: result.id,
+				email: result.email,
+				password: result.password,
+				username: result.username,
+				image: await uploadFile(formData.file),
+			}),
 		});
 		const data = await res.json();
 
