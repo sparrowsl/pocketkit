@@ -11,7 +11,7 @@
 <article class="max-w-2xl">
 	<figure class="flex gap-4 border pb-5 py-2 px-3 rounded bg-white">
 		<Image
-			src={data.post.author.image.includes("https")
+			src={data.post.author.image.includes("robo")
 				? data.post.author.image
 				: `/uploads/${data.post.author.image}`}
 			alt="{data.post.author.username}'s profile"

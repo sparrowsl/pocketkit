@@ -67,7 +67,7 @@ export const actions = {
 		});
 		const data = await res.json();
 
-		if (!res.ok) return fail(400, { error: data.message });
+		if (!res.ok) return fail(400, { errors: { message: data.message } });
 
 		// TODO: set jwt token for the user and store in a cookie
 		cookies.set("session", data.user.id, {

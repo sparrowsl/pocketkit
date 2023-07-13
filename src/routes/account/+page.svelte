@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import { enhance } from "$app/forms";
 	import { page } from "$app/stores";
 	import Button from "$lib/components/shared/Button.svelte";
@@ -52,7 +53,7 @@
 
 			<label for="file" class="flex flex-col gap-1 text-(sm gray-500)">
 				<span>Update Image</span>
-				<Input type="file" id="file" name="file" />
+				<Input type="file" id="file" name="image" />
 			</label>
 
 			<Button class="border-teal border mt-3">Update</Button>

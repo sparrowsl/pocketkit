@@ -1,6 +1,6 @@
 import { error, json } from "@sveltejs/kit";
-import prisma from "$lib/server/prisma.js";
 import bcrypt from "bcrypt";
+import prisma from "$lib/server/prisma.js";
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params }) {
@@ -15,6 +15,7 @@ export async function GET({ params }) {
 /** @type {import('./$types').RequestHandler} */
 export async function PATCH({ request, params }) {
 	const { email, password, username, image } = await request.json();
+
 	const user = await prisma.user.update({
 		where: { id: parseInt(params.email) },
 		data: {
@@ -24,5 +25,6 @@ export async function PATCH({ request, params }) {
 			image: image ?? `https://robohash.org/${username}`,
 		},
 	});
+
 	return json({ user });
 }

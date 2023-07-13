@@ -8,12 +8,12 @@
 	export let form;
 </script>
 
-{#if form?.error}
+{#if form?.errors?.message}
 	<!-- Flash Message/Toast -->
-	<p class="text-(sm red)">{form.errors}</p>
+	<p class="text-(sm red)">{form?.errors?.message}</p>
 {/if}
 <section class="max-w-xl mx-auto">
-	<form action="" method="post" class="border bg-white py-5 px-10" use:enhance>
+	<form action="" method="POST" class="border bg-white py-5 px-10" use:enhance>
 		<legend class="border-b mb-3 text-gray-700">Join Now</legend>
 
 		<fieldset class="grid gap-4">

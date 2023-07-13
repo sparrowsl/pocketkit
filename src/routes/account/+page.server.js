@@ -15,7 +15,8 @@ const updateSchema = z.object({
 	password: z
 		.string({ required_error: "Password is required" })
 		.min(4, { message: "Password is too short, must be (4) or more characters" })
-		.trim(),
+		.trim()
+		.optional(),
 	image: z.any(z.instanceof(File)).optional(),
 });
 
@@ -29,28 +30,30 @@ export const actions = {
 	default: async ({ fetch, request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
-		let result;
+		// let result;
 		try {
-			result = updateSchema.parse(formData);
+			const { image, ...data } = formData;
+			const result = updateSchema.parse(data);
+			console.log(result);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
 			return { data: formData, errors };
 		}
 
-		const res = await fetch(`/api/users/${result.id}`, {
-			headers: { "Content-Type": "application/json" },
-			method: "PATCH",
-			body: JSON.stringify({
-				id: result.id,
-				email: result.email,
-				password: result.password,
-				username: result.username,
-				image: await uploadFile(formData.file),
-			}),
-		});
-		const data = await res.json();
+		// const res = await fetch(`/api/users/${result.id}`, {
+		// 	headers: { "Content-Type": "application/json" },
+		// 	method: "PATCH",
+		// 	body: JSON.stringify({
+		// 		id: result.id,
+		// 		email: result.email,
+		// 		password: result.password,
+		// 		username: result.username,
+		// 		image: await uploadFile(formData.image),
+		// 	}),
+		// });
+		// const data = await res.json();
 
-		if (!res.ok) return fail(400, { error: data.message });
+		// if (!res.ok) return fail(400, { error: data.message });
 		return { success: true, message: "Update Successful!!" };
 	},
 };
