@@ -8,12 +8,14 @@
 	export let data;
 </script>
 
-<article class="max-w-2xl mx-auto">
+<article class="max-w-2xl">
 	<figure class="flex gap-4 border pb-5 py-2 px-3 rounded bg-white">
 		<Image
-			src={data.post.author.image}
+			src={data.post.author.image.includes("https")
+				? data.post.author.image
+				: `/uploads/${data.post.author.image}`}
 			alt="{data.post.author.username}'s profile"
-			class="rounded-full h-6rem"
+			class="rounded-full h-6rem w-6rem"
 		/>
 		<figcaption class="w-full">
 			<section class="border-b mb-2 flex justify-between items-center py-1">

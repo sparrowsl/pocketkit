@@ -10,7 +10,7 @@
 	export let form;
 </script>
 
-<section class="max-w-xl mx-auto">
+<section class="max-w-xl">
 	<form action="" method="post" class="border bg-white py-5 px-10" use:enhance>
 		<legend class="border-b mb-3 text-gray-700">New Post </legend>
 

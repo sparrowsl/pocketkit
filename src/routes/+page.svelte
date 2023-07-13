@@ -5,7 +5,7 @@
 	export let data;
 </script>
 
-<section class="max-w-xl mx-auto grid gap-5">
+<section class="max-w-xl grid gap-5">
 	{#each data.posts as post}
 		<PostCard {post} />
 	{/each}

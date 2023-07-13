@@ -14,7 +14,7 @@
 {#if form?.success}
 	<p class="text-sm">{form.message}</p>
 {/if}
-<section class="max-w-xl mx-auto bg-white border rounded p-5">
+<section class="max-w-xl bg-white border rounded p-5">
 	<figure class="flex gap-5 items-center">
 		<Image
 			src={user.image.includes("robohash") ? user.image : `/uploads/${user.image}`}
