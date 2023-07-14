@@ -27,7 +27,12 @@
 				</div>
 				{#if $page.data.user?.id === $page.data.post.authorId && $page.data.user}
 					<div class="flex items-center gap-2">
-						<a href="/" class="block bg-blue-300 text-(white sm) px-4 py-1 rounded-sm">edit</a>
+						<a
+							href="/posts/{data.post.id}/edit"
+							class="block bg-blue-300 text-(white sm) px-4 py-1 rounded-sm"
+						>
+							edit
+						</a>
 						<form action="" method="post" use:enhance>
 							<button class="bg-red-300 text-(sm white) px-4 py-1 rounded-sm">delete</button>
 						</form>
@@ -37,7 +42,7 @@
 
 			<section>
 				<h2 class="text-(3xl gray-700) mb-2">{data.post.title}</h2>
-				<p class="text-gray-600 text-sm">{data.post.content}</p>
+				<p class="text-gray-600 text-sm whitespace-pre-wrap">{data.post.content}</p>
 			</section>
 		</figcaption>
 	</figure>
