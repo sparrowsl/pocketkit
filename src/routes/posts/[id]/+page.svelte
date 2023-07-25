@@ -3,8 +3,8 @@
 	import { enhance } from "$app/forms";
 	import dayjs from "dayjs";
 	import Image from "$lib/components/shared/Image.svelte";
+	import Input from "$lib/components/shared/Input.svelte";
 
-	/** @type {import("./$types").PageData} */
 	export let data;
 </script>
 
@@ -33,7 +33,8 @@
 						>
 							edit
 						</a>
-						<form action="" method="post" use:enhance>
+						<form action="?/deletePost" method="POST" use:enhance>
+							<Input type="hidden" value={data.post.id} name="id" />
 							<button class="bg-red-300 text-(sm white) px-4 py-1 rounded-sm">delete</button>
 						</form>
 					</div>

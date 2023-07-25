@@ -1,14 +1,10 @@
 <script>
-	import { page } from "$app/stores";
 	import { enhance } from "$app/forms";
 	import Button from "$lib/components/shared/Button.svelte";
 	import Input from "$lib/components/shared/Input.svelte";
 	import Textarea from "$lib/components/shared/Textarea.svelte";
 
-	/** @type {import("./$types").PageData} */
 	export let data;
-
-	/** @type {import("./$types").ActionData} */
 	export let form;
 </script>
 

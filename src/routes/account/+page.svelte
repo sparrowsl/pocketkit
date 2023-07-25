@@ -6,10 +6,10 @@
 	import Image from "$lib/components/shared/Image.svelte";
 	import Input from "$lib/components/shared/Input.svelte";
 
-	/** @type {import("./$types").ActionData} */
 	export let form;
 
 	const user = $page.data?.user;
+	$: if (form?.success) window.location = $page.url.href;
 </script>
 
 {#if form?.success}
@@ -33,15 +33,16 @@
 
 		<fieldset class="grid gap-4">
 			<Input type="hidden" value={user.id} name="id" />
+			<Input type="hidden" value={user.image} name="currentImage" />
 			<label for="" class="text-(sm gray-500)">
 				<span>Username</span>
-				<Input name="username" bind:value={user.username} placeholder="username" />
+				<Input name="username" value={user.username} placeholder="username" />
 				<small class="text-red">{form?.errors?.username ?? ""}</small>
 			</label>
 
 			<label for="" class="text-(sm gray-500)">
 				<span>Email</span>
-				<Input type="email" name="email" bind:value={user.email} placeholder="email" />
+				<Input type="email" name="email" value={user.email} placeholder="email" />
 				<small class="text-red">{form?.errors?.email ?? ""}</small>
 			</label>
 
@@ -52,8 +53,8 @@
 			</label>
 
 			<label for="file" class="flex flex-col gap-1 text-(sm gray-500)">
-				<span>Update Image</span>
-				<Input type="file" id="file" name="image" />
+				<span>Update Image (optional)</span>
+				<Input type="file" id="file" name="image" accept="image/*" required={false} />
 			</label>
 
 			<Button class="border-teal border mt-3">Update</Button>

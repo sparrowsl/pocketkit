@@ -1,6 +1,7 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { z } from "zod";
 import { uploadFile } from "$lib/utils/uploadImage.js";
+import prisma from "$lib/server/prisma.js";
 
 const updateSchema = z.object({
 	id: z.string().transform((num) => parseInt(num)),
@@ -15,7 +16,6 @@ const updateSchema = z.object({
 	password: z
 		.string({ required_error: "Password is required" })
 		.min(4, { message: "Password is too short, must be (4) or more characters" })
-		.trim()
 		.optional(),
 	image: z.any(z.instanceof(File)).optional(),
 });
@@ -30,30 +30,31 @@ export const actions = {
 	default: async ({ fetch, request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
-		// let result;
+		let result;
 		try {
-			const { image, ...data } = formData;
-			const result = updateSchema.parse(data);
+			result = updateSchema.parse(formData);
 			console.log(result);
 		} catch (/** @type {*} */ error) {
 			const { fieldErrors: errors } = error.flatten();
-			return { data: formData, errors };
+			return { errors };
 		}
 
-		// const res = await fetch(`/api/users/${result.id}`, {
-		// 	headers: { "Content-Type": "application/json" },
-		// 	method: "PATCH",
-		// 	body: JSON.stringify({
-		// 		id: result.id,
-		// 		email: result.email,
-		// 		password: result.password,
-		// 		username: result.username,
-		// 		image: await uploadFile(formData.image),
-		// 	}),
-		// });
-		// const data = await res.json();
+		// console.log(result);
 
-		// if (!res.ok) return fail(400, { error: data.message });
+		const updated = await prisma.user
+			.update({
+				where: { id: result.id },
+				data: {
+					id: result.id,
+					email: result.email,
+					password: result.password,
+					username: result.username,
+					image: result.image.size > 0 ? await uploadFile(formData.image) : formData.currentImage.toString(),
+				},
+			})
+			.catch((e) => false);
+
+		if (!updated) return fail(400, { error: "could not update user" });
 		return { success: true, message: "Update Successful!!" };
 	},
 };

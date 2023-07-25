@@ -6,12 +6,11 @@
 	import Input from "$lib/components/shared/Input.svelte";
 	import Textarea from "$lib/components/shared/Textarea.svelte";
 
-	/** @type {import("./$types").ActionData} */
 	export let form;
 </script>
 
 <section class="max-w-xl">
-	<form action="" method="post" class="border bg-white py-5 px-10" use:enhance>
+	<form action="?/createPost" method="post" class="border bg-white py-5 px-10" use:enhance>
 		<legend class="border-b mb-3 text-gray-700">New Post </legend>
 
 		<fieldset class="grid gap-4">

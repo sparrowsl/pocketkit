@@ -7,7 +7,7 @@ export async function handle({ event, resolve }) {
 	if (!session) return await resolve(event);
 
 	const user = await prisma.user.findUnique({
-		where: { id: Number(session) },
+		where: { id: parseInt(session) },
 		select: {
 			email: true,
 			id: true,

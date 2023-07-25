@@ -22,7 +22,7 @@
 			<h2 class="text-(2xl gray-700) hover:(text-blue)">
 				<a href="/posts/{post.id}">{post.title}</a>
 			</h2>
-			<p class="text-gray-600 text-sm">{post.content}</p>
+			<p class="text-gray-600 text-sm line-clamp-2">{post.content}</p>
 		</section>
 	</figcaption>
 </figure>

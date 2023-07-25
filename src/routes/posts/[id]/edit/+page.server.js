@@ -23,15 +23,12 @@ export async function load({ locals, fetch, params }) {
 	// Make sure the correct author can edit the post, or redirect back to post
 	if (locals.user.id !== post.authorId) throw redirect(307, `/posts/${params.id}`);
 
-	return {
-		/** @type {import("$lib/types.js").Post} */
-		post,
-	};
+	return { post };
 }
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	default: async ({ fetch, request }) => {
+	editPost: async ({ fetch, request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
 		let result;

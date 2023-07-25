@@ -9,7 +9,7 @@ const newPostSchema = z.object({
 		.trim(),
 	content: z
 		.string({ required_error: "Content is required" })
-		.min(2, { message: "Post must have a content!!" })
+		.min(2, { message: "Post must have a content more than 2 letters!!" })
 		.trim(),
 });
 
@@ -20,7 +20,7 @@ export async function load({ locals }) {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	default: async ({ request, fetch }) => {
+	createPost: async ({ request, fetch }) => {
 		const formData = Object.fromEntries(await request.formData());
 
 		let result;
@@ -36,8 +36,8 @@ export const actions = {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(result),
 		});
-		// const data = await res.json();
+		if (!res.ok) return;
 
-		if (res.ok) throw redirect(302, "/");
+		throw redirect(302, "/");
 	},
 };

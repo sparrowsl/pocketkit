@@ -24,7 +24,7 @@ export async function PATCH({ request }) {
 	const { id, title, content } = await request.json();
 
 	const post = await prisma.post.update({
-		where: { id },
+		where: { id: parseInt(id) },
 		data: { title, content },
 	});
 
@@ -33,6 +33,12 @@ export async function PATCH({ request }) {
 
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE({ request }) {
-	console.log(await request.json());
-	return json({});
+	const { id } = await request.json();
+	console.log("id in server,", id);
+
+	await prisma.post.delete({
+		where: { id: parseInt(id) },
+	});
+
+	return json({ success: true });
 }
