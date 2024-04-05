@@ -5,15 +5,22 @@ services:
     depends_on:
       - api
 
-    build: ./client/
-
+    build: ./client
     ports:
       - 5173:5173
 
+    environment:
+      API_URL: http://127.0.0.1:8090/api/
+
+    volumes:
+      - ./client:/app
+
   api:
-    build: ./backend/
-
+    build: ./backend
     ports:
-      - 8080:8080
+      - 8090:8090
 
+    volumes:
+      - ./backend:/app
+      - ./backend/pb_data:/app/pb_data
 

@@ -6,7 +6,7 @@
 <div class="bg-gray-500 text-white font-roboto">
 	<nav class="container flex justify-between items-center min-h-10dvh">
 		<!-- Logo -->
-		<a class="font-bold tracking-wider" href="/">BlogKit</a>
+		<a class="font-bold tracking-wider" href="/">PocketKit</a>
 
 		<ul class="flex gap-5 items-center text-sm">
 			{#if !$page?.data.user}
