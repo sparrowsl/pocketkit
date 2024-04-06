@@ -10,7 +10,7 @@ services:
       - 5173:5173
 
     environment:
-      API_URL: http://127.0.0.1:8090/api/
+      PUBLIC_API_URL: http://127.0.0.1:8090
 
     volumes:
       - ./client:/app
@@ -22,5 +22,5 @@ services:
 
     volumes:
       - ./backend:/app
-      - ./backend/pb_data:/app/pb_data
+      # - ./backend/pb_data:/app/pb_data
 

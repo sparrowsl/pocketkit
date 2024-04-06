@@ -1,10 +1,13 @@
+import pb from '$lib/pocketbase.js';
+
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
-	const res = await fetch("/api/posts");
-	const { posts } = await res.json();
+export async function load() {
+	const posts = await pb.collection("posts").getFullList();
+
+	console.log(posts)
 
 	return {
-		/** @type {import("$lib/types.js").Post[]} */
+		// /** @type {import("$lib/types.js").Post[]} */
 		posts,
 	};
 }
