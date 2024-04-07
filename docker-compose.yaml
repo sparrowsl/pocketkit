@@ -2,6 +2,8 @@ version: "3.8"
 
 services:
   web:
+    container_name: web
+    restart: always
     depends_on:
       - api
 
@@ -16,11 +18,13 @@ services:
       - ./client:/app
 
   api:
+    container_name: api
+    restart: unless-stopped
     build: ./backend
     ports:
       - 8090:8090
 
     volumes:
       - ./backend:/app
-      # - ./backend/pb_data:/app/pb_data
+      - ./backend/pb_data:/app/pb_data
 
