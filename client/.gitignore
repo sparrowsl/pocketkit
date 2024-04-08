@@ -5,8 +5,6 @@ node_modules
 /package
 .env
 .env.*
-*.db
 !.env.example
-uploads/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*

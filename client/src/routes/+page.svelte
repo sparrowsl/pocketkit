@@ -1,15 +1,4 @@
-<script>
-	import PostCard from "$lib/components/PostCard.svelte";
-
-	/** @type {import("./$types").PageData} */
-	export let data;
-
-	$: console.log(data.posts);
-</script>
-
-<section class="max-w-xl grid gap-5">
-	{#each data.posts as post}
-		<h2>{post.title}</h2>
-		<!-- <PostCard {post} /> -->
-	{/each}
-</section>
+<h1>Welcome to SvelteKit</h1>
+<p>
+	Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
+</p>

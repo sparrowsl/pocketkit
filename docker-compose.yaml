@@ -2,29 +2,29 @@ version: "3.8"
 
 services:
   web:
-    container_name: web
-    restart: always
+    # container_name: web
+    # restart: always
     depends_on:
       - api
 
     build: ./client
     ports:
       - 5173:5173
-
-    env_file:
-      - ./client/.env
+    
+    environment:
+      PUBLIC_API_URL: http://0.0.0.0:8080
 
     volumes:
       - ./client:/app
-
+  
   api:
-    container_name: api
-    restart: unless-stopped
+    # container_name: api
+    # restart: unless-stopped
     build: ./backend
     ports:
-      - 8090:8090
+      - 8080:8080
 
     volumes:
       - ./backend:/app
-      - ./backend/pb_data:/app/pb_data
+      # - ./backend/pb_data:/app/pb_data
 
