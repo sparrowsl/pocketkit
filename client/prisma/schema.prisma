@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @unique @default(autoincrement())
+  username String @unique
+  email    String @unique
+  image    String @default("https://robohash.org/user")
+  password String
+  posts    Post[]
+}
+
+model Post {
+  id          Int      @id @unique @default(autoincrement())
+  title       String
+  content     String
+  datePosted  DateTime @default(now())
+  lastUpdated DateTime @updatedAt
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    Int?
+}
