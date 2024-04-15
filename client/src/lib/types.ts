@@ -1,10 +1,10 @@
 export interface Post {
-	id: string;
-	author: {
-		username: string;
-		image: string;
+	id?: string;
+	author?: {
+		username?: string;
+		image?: string;
 	};
-	date: Date;
-	title: string;
-	content: string;
+	date?: Date;
+	title?: string;
+	content?: string;
 }
